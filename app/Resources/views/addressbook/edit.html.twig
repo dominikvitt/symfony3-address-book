@@ -7,7 +7,7 @@
         {{ form_widget(edit_form) }}
 
         {% if addressBook.picture %}
-        <img src="{{ asset('uploads/pictures/' ~ addressBook.picture) }}">
+        <img src="{{ asset('uploads/pictures/' ~ addressBook.picture) }}" width="200" height="200">
         <br>
         {% else %}
         <p>No picture uploaded</p>
