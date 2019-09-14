@@ -3,8 +3,8 @@
 {% block body %}
     <h1>Addressbooks list</h1>
 
-    <table>
-        <thead>
+    <table class="table table-bordered">
+        <thead class="thead-light">
             <tr>
                 <th>Id</th>
                 <th>Firstname</th>
@@ -37,23 +37,15 @@
                 <td>{{ addressBook.email }}</td>
                 <td>{{ addressBook.picture }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('addressbook_show', { 'id': addressBook.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('addressbook_edit', { 'id': addressBook.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-info" href="{{ path('addressbook_show', { 'id': addressBook.id }) }}">show</a>
+
+                    <a class="btn btn-primary" href="{{ path('addressbook_edit', { 'id': addressBook.id }) }}">edit</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('addressbook_new') }}">Create a new addressBook</a>
-        </li>
-    </ul>
+    <a class="btn btn-success"  href="{{ path('addressbook_new') }}">Create</a>
+
 {% endblock %}

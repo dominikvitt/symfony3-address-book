@@ -3,11 +3,11 @@
 {% block body %}
     <h1>Addressbook</h1>
 
-    <table>
+    <table class="table table-bordered col-sm-6">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ addressBook.id }}</td>
+                <th class="col-sm-4">Id</th>
+                <td class="col-sm-8">{{ addressBook.id }}</td>
             </tr>
             <tr>
                 <th>Firstname</th>
@@ -56,17 +56,12 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('addressbook_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('addressbook_edit', { 'id': addressBook.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
+    {{ form_start(delete_form) }}
+        <input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Are you sure you want to delete this address?');">
+    {{ form_end(delete_form) }}
+
+    <a class="btn btn-info" href="{{ path('addressbook_index') }}">Back to the list</a>
+    <a class="btn btn-primary" href="{{ path('addressbook_edit', { 'id': addressBook.id }) }}">Edit</a>
+
     </ul>
 {% endblock %}

@@ -5,12 +5,11 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" class="btn btn-primary" value="Create" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('addressbook_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <br>
+
+    <a class="btn btn-info" href="{{ path('addressbook_index') }}">Back to the list</a>
+
 {% endblock %}

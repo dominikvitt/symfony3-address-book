@@ -2,20 +2,16 @@
 
 {% block body %}
     <h1>Addressbook edit</h1>
-
+    
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <button type="submit" class="btn btn-primary">Save</button>
     {{ form_end(edit_form) }}
+    <br>
+    {{ form_start(delete_form) }}
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this address?');">Delete</button>
+    {{ form_end(delete_form) }}    
+    <br>
+    <a class="btn btn-info" href="{{ path('addressbook_index') }}">Back to the list</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('addressbook_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}
