@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Addressbook controller.
  *
- * @Route("addressbook")
+ * @Route("/")
  */
 class AddressBookController extends Controller
 {
