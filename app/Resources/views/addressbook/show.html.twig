@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Addressbook</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ addressBook.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ addressBook.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ addressBook.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Street</th>
+                <td>{{ addressBook.street }}</td>
+            </tr>
+            <tr>
+                <th>Housenumber</th>
+                <td>{{ addressBook.houseNumber }}</td>
+            </tr>
+            <tr>
+                <th>Zip</th>
+                <td>{{ addressBook.zip }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ addressBook.city }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ addressBook.country }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ addressBook.phone }}</td>
+            </tr>
+            <tr>
+                <th>Birthday</th>
+                <td>{{ addressBook.birthday }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ addressBook.email }}</td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td>{{ addressBook.picture }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('addressbook_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('addressbook_edit', { 'id': addressBook.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
