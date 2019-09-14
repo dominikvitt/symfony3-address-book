@@ -13,3 +13,8 @@
     <a class="btn btn-info" href="{{ path('addressbook_index') }}">Back to the list</a>
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+{% endblock %}

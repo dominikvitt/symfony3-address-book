@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class AddressBookType extends AbstractType
 {
@@ -15,7 +16,12 @@ class AddressBookType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstname')->add('lastname')->add('street')->add('houseNumber')->add('zip')->add('city')->add('country')->add('phone')->add('birthday')->add('email')
+        $builder->add('firstname')->add('lastname')->add('street')->add('houseNumber')->add('zip')->add('city')->add('country')->add('phone')
+        ->add('birthday', DateType::class, [
+            'widget' => 'single_text',
+            'input'  => 'string'
+        ])
+        ->add('email')
         ->add('picture', FileType::class, [
             'label' => 'Picture (only jpeg, png, bmp and gif formats are allowed)',
 

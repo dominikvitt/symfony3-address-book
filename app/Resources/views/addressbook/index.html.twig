@@ -33,7 +33,7 @@
                 <td>{{ addressBook.city }}</td>
                 <td>{{ addressBook.country }}</td>
                 <td>{{ addressBook.phone }}</td>
-                <td>{{ addressBook.birthday }}</td>
+                <td>{{ addressBook.birthday|date("d.m.Y") }}</td>
                 <td>{{ addressBook.email }}</td>
                 <td><img src="{{ asset('uploads/pictures/' ~ addressBook.picture) }}" width="50" height="50"></td>
                 <td>
