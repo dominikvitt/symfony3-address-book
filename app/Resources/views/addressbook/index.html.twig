@@ -35,7 +35,7 @@
                 <td>{{ addressBook.phone }}</td>
                 <td>{{ addressBook.birthday }}</td>
                 <td>{{ addressBook.email }}</td>
-                <td>{{ addressBook.picture }}</td>
+                <td><img src="{{ asset('uploads/pictures/' ~ addressBook.picture) }}" width="50" height="50"></td>
                 <td>
                     <a class="btn btn-info" href="{{ path('addressbook_show', { 'id': addressBook.id }) }}">show</a>
 

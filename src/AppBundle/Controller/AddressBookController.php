@@ -44,6 +44,32 @@ class AddressBookController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // upload picture 
+            /** @var UploadedFile $picture */
+            $picture = $form['picture']->getData();
+
+            // this condition is needed because the 'picture' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($picture) {
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $newFilename = 'picture-'.uniqid().'.'.$picture->guessExtension();
+
+                // Move the file to the directory where pictures are stored
+                try {
+                    $picture->move(
+                        $this->getParameter('pictures_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'pictureFilename' property to store the PDF file name
+                // instead of its contents
+                $addressBook->setPicture($newFilename);
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($addressBook);
             $em->flush();
@@ -86,6 +112,31 @@ class AddressBookController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            // upload picture 
+            /** @var UploadedFile $picture */
+            $picture = $editForm['picture']->getData();
+
+            // this condition is needed because the 'picture' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($picture) {
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $newFilename = 'picture-'.uniqid().'.'.$picture->guessExtension();
+
+                // Move the file to the directory where pictures are stored
+                try {
+                    $picture->move(
+                        $this->getParameter('pictures_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'pictureFilename' property to store the PDF file name
+                // instead of its contents
+                $addressBook->setPicture($newFilename);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('addressbook_edit', array('id' => $addressBook->getId()));
